@@ -8,6 +8,7 @@ import android.util.SparseArray;
 import android.view.ViewTreeObserver;
 
 
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xue.viewpagerdemo.NestedScrollLayout;
 import com.xue.viewpagerdemo.NestedScrollLayout2;
 import com.xue.viewpagerdemo.R;
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
     private NestedScrollLayout2 container;
 
+    private SmartRefreshLayout refreshLayout;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,13 +68,19 @@ public class MainActivity extends AppCompatActivity {
                 viewModel.getPagerHeight().setValue(height);
             }
         });
+
+        refreshLayout = findViewById(R.id.refreshlayout);
+        refreshLayout.setFooterHeight(30);
+        refreshLayout.setEnableLoadMore(true);
+        //refreshLayout.foot
     }
 
     private void initAdapter() {
         SparseArray<Class<? extends BaseViewHolder>> viewHolders = new SparseArray<>();
         viewHolders.put(TYPE_PARENT, ImageViewHolder.class);
         viewHolders.put(TYPE_PAGER, PagerViewHolder.class);
-        int[] ids = new int[]{R.mipmap.pic1, R.mipmap.pic2, R.mipmap.pic3, R.mipmap.pic4, R.mipmap.pic5};
+        int[] ids = new int[]{R.mipmap.pic1, R.mipmap.pic2, R.mipmap.pic3, R.mipmap.pic4, R.mipmap.pic5
+                ,R.mipmap.pic1, R.mipmap.pic2, R.mipmap.pic3, R.mipmap.pic4, R.mipmap.pic5};
         List<AdapterItem> itemList = new ArrayList<>();
         for (int id : ids) {
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(), id);

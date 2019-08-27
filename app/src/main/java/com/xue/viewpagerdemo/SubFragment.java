@@ -23,6 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -51,14 +52,14 @@ public class SubFragment extends Fragment {
     private void init(View view) {
         int color = getArguments().getInt("color");
         recyclerView = view.findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(),3));
         recyclerView.setNestedScrollingEnabled(true);
         recyclerView.setBackgroundColor(color);
 
         SparseArray<Class<? extends BaseViewHolder>> viewHolders = new SparseArray<>();
         viewHolders.put(ViewType.TYPE_TEXT, TextViewHolder.class);
         List<AdapterItem> itemList = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 50; i++) {
             itemList.add(new TextItem("text" + i));
         }
         adapter = new BaseAdapter(itemList, view.getContext(), viewHolders);

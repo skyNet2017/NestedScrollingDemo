@@ -2,6 +2,7 @@ package com.xue.viewpagerdemo.common;
 
 import android.content.Context;
 
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.xue.viewpagerdemo.items.PageItem;
 
 /**
  * Created by 薛贤俊 on 2019/2/21.
@@ -26,17 +29,23 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
 
     private LayoutInflater inflater;
 
+    private boolean isOuter;
+
     public BaseAdapter(List<AdapterItem> itemList, Context context, SparseArray<Class<? extends BaseViewHolder>> viewHolders) {
         this.itemList = itemList;
         this.context = context;
         this.viewHolders = viewHolders;
         this.inflater = LayoutInflater.from(context);
+        if(itemList.get(0) instanceof PageItem){
+            isOuter = true;
+        }
     }
 
 
     @NonNull
     @Override
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        Log.w("onCreateViewHolder",isOuterText()+":"+viewType);
         try {
             Class clazz = viewHolders.get(viewType);
             HolderAnnotation annotation = (HolderAnnotation) clazz.getAnnotation(HolderAnnotation.class);
@@ -47,7 +56,7 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
             viewHolder.initViews();
             return viewHolder;
         } catch (Throwable e) {
-
+            e.printStackTrace();
         }
         return null;
     }
@@ -56,6 +65,11 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
     public void onBindViewHolder(@NonNull BaseViewHolder baseViewHolder, int position) {
         AdapterItem item = itemList.get(position);
         baseViewHolder.bindView(item.getDataModel());
+        Log.w("onBindViewHolder",isOuterText()+": position:"+position);
+    }
+
+    private String isOuterText() {
+        return isOuter ? "out" : "innner";
     }
 
     @Override
