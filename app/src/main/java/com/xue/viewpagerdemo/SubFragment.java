@@ -13,6 +13,7 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xue.viewpagerdemo.common.BaseAdapter;
@@ -62,7 +63,7 @@ public class SubFragment extends Fragment {
         viewHolders.put(ViewType.TYPE_TEXT, TextViewHolder.class);
         List<TextItem> itemList = new ArrayList<>();
         List<String> strings = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 10; i++) {
             itemList.add(new TextItem("text" + i));
             strings.add("text"+i);
         }
@@ -71,11 +72,60 @@ public class SubFragment extends Fragment {
 
         //使用basequickadapter,看loadmore是否能用
         adapter = new InnerAdapter();
-        ((InnerAdapter) adapter).setEnableLoadMore(true);
+        ((InnerAdapter) adapter).setEnableLoadMore(false);
         recyclerView.setAdapter(adapter);
         ((InnerAdapter) adapter).addData(strings);
 
-        ((InnerAdapter) adapter).setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+
+        //loadmore
+        final TextView textView = new TextView(getContext());
+        textView.setText("loading.....");
+
+        ((InnerAdapter) adapter).addFooterView(textView);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                Log.w("inner","onScrollStateChanged");
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                Log.w("inner","onScrolled");
+                if(isVisibleToUser){
+                    int[] location = new int[2];
+                    textView.getLocationOnScreen(location);
+                    int y = location[1];
+                    Log.e("inner","footview 位置："+location[0]+","+location[1]);
+                    if(y == 0){
+                        Log.e("inner","划出了屏幕，看不到footview");
+                        return;
+                    }
+                    /*if(y <= ScreenUtil.getScreenHeight()){
+                     Log.e("inner","滑动到底部看到了footview");
+                    }else {
+                        Log.e("inner","划出了屏幕，看不到footview");
+                    }*/
+                    Log.e("inner","滑动到底部看到了footview");
+                    if(isLoadingMore){
+                        Log.e("inner","is loadingmore....");
+                        return;
+                    }else {
+                        Log.e("inner","start loadmore ....");
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                isLoadingMore = false;
+                            }
+                        },2000);
+                    }
+                }
+            }
+        });
+
+        /*((InnerAdapter) adapter).setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
                 Log.w("InnerAdapter","onLoadMoreRequested");
@@ -86,15 +136,19 @@ public class SubFragment extends Fragment {
                     }
                 },2000);
             }
-        },recyclerView);
+        },recyclerView);*/
+
+
 
 
     }
 
-
+    boolean isLoadingMore;
+    boolean isVisibleToUser;
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        this.isVisibleToUser = isVisibleToUser;
         if (isVisibleToUser && trackFragment() && viewModel != null) {
             viewModel.setChildList(recyclerView);
         }

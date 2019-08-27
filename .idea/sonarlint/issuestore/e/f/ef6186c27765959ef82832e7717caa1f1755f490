@@ -1,0 +1,9 @@
+
+msquid:UselessImportCheck"BRemove this unused import 'android.arch.lifecycle.LifecycleOwner'.(ßŒò×8“ãŒ’Í-
+¤squid:S1186z"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÀÏèÆûÿÿÿÿ8ššúÍ-
+lsquid:UselessImportCheck"<Remove this unused import 'android.support.v4.app.Fragment'.(îñ«úÿÿÿÿ8“ãŒ’Í-
+Lsquid:S1066®"/Merge this if statement with the enclosing one.(€•Ò¼üÿÿÿÿ
+tsquid:UselessImportCheck
+"JRemove this unused import 'android.support.v4.view.NestedScrollingParent'.(¶¼ÔD8°´õÍ-
+lsquid:UselessImportCheck"<Remove this unused import 'android.arch.lifecycle.Observer'.(ŞƒşÖÿÿÿÿÿ8“ãŒ’Í-
+nsquid:UselessImportCheck	"DRemove this unused import 'android.support.v4.app.FragmentActivity'.(¸­¯D8“ãŒ’Í-
