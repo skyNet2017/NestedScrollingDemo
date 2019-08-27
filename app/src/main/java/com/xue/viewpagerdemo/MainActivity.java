@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView.Adapter adapter;
 
+    public NestedViewModel getViewModel() {
+        return viewModel;
+    }
+
     private NestedViewModel viewModel;
 
     private NestedScrollLayout2 container;
@@ -61,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         container.setTarget(this);
         initAdapter();
         viewModel = new NestedViewModel();
+
+        viewModel.setNestedLayout(container);
         viewModel.owener = this;
         container.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -72,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         refreshLayout = findViewById(R.id.refreshlayout);
         refreshLayout.setFooterHeight(30);
-        refreshLayout.setEnableLoadMore(true);
+        refreshLayout.setEnableLoadMore(false);
         //refreshLayout.foot
     }
 

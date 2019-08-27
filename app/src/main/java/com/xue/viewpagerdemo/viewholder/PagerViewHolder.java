@@ -76,14 +76,14 @@ public class PagerViewHolder extends BaseViewHolder<List<PageVO>> {
             @Override
             public void onViewAttachedToWindow(View view) {
                 if (viewModel != null) {
-                    viewModel.childView = itemView;
+                    viewModel.setChildView(itemView);;
                 }
             }
 
             @Override
             public void onViewDetachedFromWindow(View view) {
                 if (viewModel != null) {
-                    viewModel.childView = null;
+                    viewModel.setChildView(null);
                 }
             }
         });

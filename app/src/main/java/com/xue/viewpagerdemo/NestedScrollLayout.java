@@ -1,6 +1,13 @@
 package com.xue.viewpagerdemo;
 
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.Observer;
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -9,18 +16,7 @@ import android.widget.OverScroller;
 
 import com.xue.viewpagerdemo.model.NestedViewModel;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.view.NestedScrollingChild;
-import androidx.core.view.NestedScrollingChild2;
-import androidx.core.view.NestedScrollingParent2;
-import androidx.core.view.ViewCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.RecyclerView;
+
 
 /**
  * Created by 薛贤俊 on 2019/2/15.
@@ -55,7 +51,7 @@ public class NestedScrollLayout extends FrameLayout {
     }
 
     public void setTarget(LifecycleOwner target) {
-        if (target instanceof FragmentActivity) {
+        /*if (target instanceof FragmentActivity) {
             mScrollViewModel = ViewModelProviders.of((FragmentActivity) target).get(NestedViewModel.class);
         } else if (target instanceof Fragment) {
             mScrollViewModel = ViewModelProviders.of((Fragment) target).get(NestedViewModel.class);
@@ -74,7 +70,7 @@ public class NestedScrollLayout extends FrameLayout {
                 Log.d("xuetest","onChanged");
                 mChildList = (RecyclerView) view;
             }
-        });
+        });*/
     }
 
     public void setRootList(RecyclerView recyclerView) {

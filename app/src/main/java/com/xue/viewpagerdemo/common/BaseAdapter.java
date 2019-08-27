@@ -14,8 +14,9 @@ import java.lang.reflect.Constructor;
 import java.util.List;
 
 
-
+import com.xue.viewpagerdemo.MainActivity;
 import com.xue.viewpagerdemo.items.PageItem;
+import com.xue.viewpagerdemo.viewholder.PagerViewHolder;
 
 /**
  * Created by 薛贤俊 on 2019/2/21.
@@ -54,6 +55,10 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
             View itemView = inflater.inflate(layoutId, viewGroup, false);
             Constructor constructor = clazz.getConstructor(View.class);
             BaseViewHolder viewHolder = (BaseViewHolder) constructor.newInstance(itemView);
+            if(viewHolder instanceof PagerViewHolder){
+                PagerViewHolder pagerViewHolder = (PagerViewHolder) viewHolder;
+                pagerViewHolder.setViewModel(((MainActivity)context).getViewModel());
+            }
             viewHolder.initViews();
             return viewHolder;
         } catch (Throwable e) {

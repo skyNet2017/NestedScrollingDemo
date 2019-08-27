@@ -75,7 +75,7 @@ public class SubFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && trackFragment() && viewModel != null) {
-            viewModel.childList = recyclerView;
+            viewModel.setChildList(recyclerView);
         }
     }
 
@@ -83,7 +83,7 @@ public class SubFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (trackFragment() && viewModel != null) {
-            viewModel.childList = recyclerView;
+            viewModel.setChildList(recyclerView);
         }
     }
 
@@ -91,7 +91,7 @@ public class SubFragment extends Fragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden && trackFragment() && viewModel != null) {
-            viewModel.childList = recyclerView;
+            viewModel.setChildList(recyclerView);
         }
     }
 

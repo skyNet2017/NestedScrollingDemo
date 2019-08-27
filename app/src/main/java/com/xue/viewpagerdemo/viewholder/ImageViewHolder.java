@@ -1,6 +1,7 @@
 package com.xue.viewpagerdemo.viewholder;
 
 import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -8,7 +9,7 @@ import com.xue.viewpagerdemo.R;
 import com.xue.viewpagerdemo.common.BaseViewHolder;
 import com.xue.viewpagerdemo.common.HolderAnnotation;
 
-import androidx.annotation.NonNull;
+
 
 /**
  * Created by 薛贤俊 on 2019/2/21.

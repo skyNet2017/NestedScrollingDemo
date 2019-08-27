@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginLeft="15dp"
@@ -20,5 +20,5 @@
             android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </androidx.cardview.widget.CardView>
+    </android.support.v7.widget.CardView>
 </FrameLayout>
