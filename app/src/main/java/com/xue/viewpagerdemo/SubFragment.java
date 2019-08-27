@@ -2,6 +2,12 @@ package com.xue.viewpagerdemo;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -18,15 +24,7 @@ import com.xue.viewpagerdemo.viewholder.TextViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
+
 
 /**
  * Created by 薛贤俊 on 2019/2/13.
@@ -36,6 +34,10 @@ public class SubFragment extends Fragment {
     private RecyclerView recyclerView;
 
     private RecyclerView.Adapter adapter;
+
+    public void setViewModel(NestedViewModel viewModel) {
+        this.viewModel = viewModel;
+    }
 
     private NestedViewModel viewModel;
 
@@ -72,35 +74,28 @@ public class SubFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        initViewModel();
         if (isVisibleToUser && trackFragment() && viewModel != null) {
-            viewModel.getChildList().setValue(recyclerView);
+            viewModel.childList = recyclerView;
         }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        initViewModel();
         if (trackFragment() && viewModel != null) {
-            viewModel.getChildList().setValue(recyclerView);
+            viewModel.childList = recyclerView;
         }
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        initViewModel();
         if (!hidden && trackFragment() && viewModel != null) {
-            viewModel.getChildList().setValue(recyclerView);
+            viewModel.childList = recyclerView;
         }
     }
 
-    private void initViewModel() {
-        if (viewModel == null && getActivity() != null) {
-            viewModel = ViewModelProviders.of(getActivity()).get(NestedViewModel.class);
-        }
-    }
+
 
     private boolean trackFragment() {
         if (getView() == null || !(getView().getParent() instanceof View)) {

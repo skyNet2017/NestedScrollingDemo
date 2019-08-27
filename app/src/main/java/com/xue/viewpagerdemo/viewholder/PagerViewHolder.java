@@ -1,9 +1,15 @@
 package com.xue.viewpagerdemo.viewholder;
 
+import android.arch.lifecycle.Observer;
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.google.android.material.tabs.TabLayout;
+
 import com.xue.viewpagerdemo.R;
 import com.xue.viewpagerdemo.SubPagerAdapter;
 import com.xue.viewpagerdemo.common.BaseViewHolder;
@@ -13,12 +19,7 @@ import com.xue.viewpagerdemo.model.PageVO;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+
 
 /**
  * Created by 薛贤俊 on 2019/2/21.
@@ -30,9 +31,13 @@ public class PagerViewHolder extends BaseViewHolder<List<PageVO>> {
 
     private TabLayout tabLayout;
 
-    private PagerAdapter pagerAdapter;
+    private SubPagerAdapter pagerAdapter;
 
     private List<PageVO> model;
+
+    public void setViewModel(NestedViewModel viewModel) {
+        this.viewModel = viewModel;
+    }
 
     private NestedViewModel viewModel;
 
@@ -71,14 +76,14 @@ public class PagerViewHolder extends BaseViewHolder<List<PageVO>> {
             @Override
             public void onViewAttachedToWindow(View view) {
                 if (viewModel != null) {
-                    viewModel.getChildView().setValue(itemView);
+                    viewModel.childView = itemView;
                 }
             }
 
             @Override
             public void onViewDetachedFromWindow(View view) {
                 if (viewModel != null) {
-                    viewModel.getChildView().setValue(null);
+                    viewModel.childView = null;
                 }
             }
         });
@@ -96,11 +101,12 @@ public class PagerViewHolder extends BaseViewHolder<List<PageVO>> {
             pagerAdapter = new SubPagerAdapter(fragmentActivity.getSupportFragmentManager(), model);
             viewPager.setAdapter(pagerAdapter);
             pagerAdapter.notifyDataSetChanged();
-            viewModel = ViewModelProviders.of(fragmentActivity).get(NestedViewModel.class);
-            viewModel.getPagerHeight().removeObserver(observer);
-            viewModel.getPagerHeight().observe(fragmentActivity, observer);
-            if (viewModel.getPagerHeight().getValue() != null)
-                itemView.getLayoutParams().height = viewModel.getPagerHeight().getValue();
+            //viewModel = ViewModelProviders.of(fragmentActivity).get(NestedViewModel.class);
+            pagerAdapter.setViewModel(viewModel);
+            /*viewModel.getPagerHeight().removeObserver(observer);
+            viewModel.getPagerHeight().observe(fragmentActivity, observer);*/
+            if (viewModel.pagerHeight != 0)
+                itemView.getLayoutParams().height = viewModel.pagerHeight;
         }
     }
 }

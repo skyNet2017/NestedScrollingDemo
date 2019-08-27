@@ -4,6 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.ViewTreeObserver;
 
@@ -25,11 +29,7 @@ import com.xue.viewpagerdemo.viewholder.ImageViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 
 import static com.xue.viewpagerdemo.ViewType.TYPE_PAGER;
 import static com.xue.viewpagerdemo.ViewType.TYPE_PARENT;
@@ -60,12 +60,13 @@ public class MainActivity extends AppCompatActivity {
         container.setRootList(recyclerView);
         container.setTarget(this);
         initAdapter();
-        viewModel = ViewModelProviders.of(this).get(NestedViewModel.class);
+        viewModel = new NestedViewModel();
+        viewModel.owener = this;
         container.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 int height = container.getMeasuredHeight();
-                viewModel.getPagerHeight().setValue(height);
+                viewModel.pagerHeight = height;
             }
         });
 

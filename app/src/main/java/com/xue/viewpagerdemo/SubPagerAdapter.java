@@ -1,17 +1,19 @@
 package com.xue.viewpagerdemo;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 
+import com.xue.viewpagerdemo.model.NestedViewModel;
 import com.xue.viewpagerdemo.model.PageVO;
 
 import java.lang.ref.SoftReference;
 import java.util.List;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
+
 
 /**
  * Created by 薛贤俊 on 2019/2/21.
@@ -25,9 +27,16 @@ public class SubPagerAdapter extends FragmentStatePagerAdapter {
         this.itemList = itemList;
     }
 
+    public void setViewModel(NestedViewModel viewModel) {
+        this.viewModel = viewModel;
+    }
+
+    private NestedViewModel viewModel;
+
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = new SubFragment();
+        SubFragment fragment = new SubFragment();
+        fragment.setViewModel(viewModel);
         Bundle bundle = new Bundle();
         bundle.putInt("color", itemList.get(position).getColor());
         bundle.putInt("position",position);
