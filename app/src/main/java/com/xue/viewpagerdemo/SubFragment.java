@@ -78,7 +78,7 @@ public class SubFragment extends Fragment {
 
 
         //loadmore
-        final TextView textView = new TextView(getContext());
+       /* final TextView textView = new TextView(getContext());
         textView.setText("loading.....");
 
         ((InnerAdapter) adapter).addFooterView(textView);
@@ -103,11 +103,11 @@ public class SubFragment extends Fragment {
                         Log.e("inner","划出了屏幕，看不到footview");
                         return;
                     }
-                    /*if(y <= ScreenUtil.getScreenHeight()){
+                    *//*if(y <= ScreenUtil.getScreenHeight()){
                      Log.e("inner","滑动到底部看到了footview");
                     }else {
                         Log.e("inner","划出了屏幕，看不到footview");
-                    }*/
+                    }*//*
                     Log.e("inner","滑动到底部看到了footview");
                     if(isLoadingMore){
                         Log.e("inner","is loadingmore....");
@@ -123,9 +123,9 @@ public class SubFragment extends Fragment {
                     }
                 }
             }
-        });
+        });*/
 
-        /*((InnerAdapter) adapter).setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+        ((InnerAdapter) adapter).setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
                 Log.w("InnerAdapter","onLoadMoreRequested");
@@ -136,7 +136,7 @@ public class SubFragment extends Fragment {
                     }
                 },2000);
             }
-        },recyclerView);*/
+        },recyclerView);
 
 
 
