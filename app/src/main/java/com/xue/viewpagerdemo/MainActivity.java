@@ -12,16 +12,19 @@ import android.util.SparseArray;
 import android.view.ViewTreeObserver;
 
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xue.viewpagerdemo.NestedScrollLayout;
 import com.xue.viewpagerdemo.NestedScrollLayout2;
 import com.xue.viewpagerdemo.R;
+import com.xue.viewpagerdemo.basequick.HomeMultiAdapter;
+import com.xue.viewpagerdemo.basequick.ImgBean;
 import com.xue.viewpagerdemo.common.AdapterItem;
 import com.xue.viewpagerdemo.common.BaseAdapter;
 import com.xue.viewpagerdemo.common.BaseViewHolder;
 import com.xue.viewpagerdemo.items.PageItem;
 import com.xue.viewpagerdemo.items.ParentItem;
-import com.xue.viewpagerdemo.model.NestedViewModel;
+
 import com.xue.viewpagerdemo.model.PageVO;
 import com.xue.viewpagerdemo.viewholder.PagerViewHolder;
 import com.xue.viewpagerdemo.viewholder.ImageViewHolder;
@@ -43,11 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView.Adapter adapter;
 
-    public NestedViewModel getViewModel() {
-        return viewModel;
+    public NestedScrollLayout2 getViewModel() {
+        return container;
     }
-
-    private NestedViewModel viewModel;
 
     private NestedScrollLayout2 container;
 
@@ -61,20 +62,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setNestedScrollingEnabled(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        container.setRootList(recyclerView);
-        container.setTarget(this);
-        initAdapter();
-        viewModel = new NestedViewModel();
 
-        viewModel.setNestedLayout(container);
-        viewModel.owener = this;
-        container.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                int height = container.getMeasuredHeight();
-                viewModel.pagerHeight = height;
-            }
-        });
+
+        container.setRootList(recyclerView);
+        container.measurePagerHeightAtFirstTime();
+
+
+        initAdapter();
+        //initAdapter2();
+
+
 
         refreshLayout = findViewById(R.id.refreshlayout);
         refreshLayout.setFooterHeight(30);
@@ -82,12 +79,42 @@ public class MainActivity extends AppCompatActivity {
         //refreshLayout.foot
     }
 
+   /* private void initAdapter2() {
+        List<MultiItemEntity> datas = new ArrayList<>();
+        adapter = new HomeMultiAdapter(datas);
+
+        //img
+        int[] ids = new int[]{R.mipmap.pic1, R.mipmap.pic2, R.mipmap.pic3, R.mipmap.pic4, R.mipmap.pic5
+                ,R.mipmap.pic1, R.mipmap.pic2, R.mipmap.pic3, R.mipmap.pic4, R.mipmap.pic5};
+        for (int id : ids) {
+            ImgBean imgBean = new ImgBean();
+            imgBean.img = id;
+            datas.add(imgBean);
+        }
+
+        //底部vp,后续要改成异步
+        BottomVpBean vpBean = new BottomVpBean();
+        for (int i = 0; i < 10; i++) {
+            vpBean.titles.add("tab" + i);
+        }
+        datas.add(vpBean);
+
+        adapter.addData(datas);
+
+
+    }*/
+
     private void initAdapter() {
         SparseArray<Class<? extends BaseViewHolder>> viewHolders = new SparseArray<>();
         viewHolders.put(TYPE_PARENT, ImageViewHolder.class);
         viewHolders.put(TYPE_PAGER, PagerViewHolder.class);
+
+
         int[] ids = new int[]{R.mipmap.pic1, R.mipmap.pic2, R.mipmap.pic3, R.mipmap.pic4, R.mipmap.pic5
                 ,R.mipmap.pic1, R.mipmap.pic2, R.mipmap.pic3, R.mipmap.pic4, R.mipmap.pic5};
+
+
+
         List<AdapterItem> itemList = new ArrayList<>();
         for (int id : ids) {
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(), id);

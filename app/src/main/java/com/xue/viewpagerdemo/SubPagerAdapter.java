@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 
-import com.xue.viewpagerdemo.model.NestedViewModel;
+
 import com.xue.viewpagerdemo.model.PageVO;
 
 import java.lang.ref.SoftReference;
@@ -27,11 +27,11 @@ public class SubPagerAdapter extends FragmentStatePagerAdapter {
         this.itemList = itemList;
     }
 
-    public void setViewModel(NestedViewModel viewModel) {
+    public void setViewModel(NestedScrollLayout2 viewModel) {
         this.viewModel = viewModel;
     }
 
-    private NestedViewModel viewModel;
+    private NestedScrollLayout2 viewModel;
 
     @Override
     public Fragment getItem(int position) {

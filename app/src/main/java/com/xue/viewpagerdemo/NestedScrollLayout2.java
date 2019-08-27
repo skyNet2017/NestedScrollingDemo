@@ -13,9 +13,9 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
-import com.xue.viewpagerdemo.model.NestedViewModel;
 
 
 
@@ -24,17 +24,45 @@ import com.xue.viewpagerdemo.model.NestedViewModel;
  */
 public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingParent2 {
 
+    /**
+     * tablayout和viewpager组成的子item
+     */
     private View mChildView;
     /**
      * 最外层的RecyclerView
      */
     private RecyclerView mRootList;
     /**
-     * 子RecyclerView
+     * 内部子RecyclerView
      */
     private RecyclerView mChildList;
 
-    private NestedViewModel mScrollViewModel;
+    /**
+     * tablayout+viewpager的高度，应该是屏幕上剩余可滑动的高度.
+     */
+    private int pagerHeight;
+
+
+    /**
+     * 在tab+vp的item bindview时，用这个高度赋值给item的高度
+     * @return
+     */
+    public int getTabAndVpHeight(){
+        return pagerHeight;
+    }
+
+
+    public void measurePagerHeightAtFirstTime(){
+        getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int height = getMeasuredHeight();
+                pagerHeight = height;
+                getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
+    }
+
 
     private int mAxes;
 
@@ -46,30 +74,9 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
         super(context, attrs);
     }
 
-    public void setTarget(LifecycleOwner target) {
-        /*if (target instanceof FragmentActivity) {
-            mScrollViewModel = ViewModelProviders.of((FragmentActivity) target).get(NestedViewModel.class);
-        } else if (target instanceof Fragment) {
-            mScrollViewModel = ViewModelProviders.of((Fragment) target).get(NestedViewModel.class);
-        } else {
-            throw new IllegalArgumentException("target must be FragmentActivity or Fragment");
-        }
-        mScrollViewModel.getChildView().observe(target, new Observer<View>() {
-            @Override
-            public void onChanged(@Nullable View view) {
-                mChildView = view;
-            }
-        });
-        mScrollViewModel.getChildList().observe(target, new Observer<View>() {
-            @Override
-            public void onChanged(@Nullable View view) {
-                mChildList = (RecyclerView) view;
-            }
-        });*/
-    }
 
     /**
-     * 切换viewpager时调用
+     * tablayout和viewpager所组成的item attatch window和detach win时调用
      * @param mChildView
      */
     public void setChildView(View mChildView) {
@@ -77,16 +84,21 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
     }
 
     /**
-     * 切换viewpager里的recycleview时
+     * 切换viewpager里的recycleview时： 当前fragment切换到前台时调用
      * @param mChildList
      */
     public void setChildList(RecyclerView mChildList) {
         this.mChildList = mChildList;
     }
 
+    /**
+     * 初始化时调用，设置外部主recycleview
+     * @param recyclerView
+     */
     public void setRootList(RecyclerView recyclerView) {
         mRootList = recyclerView;
     }
+
 
     @Override
     public boolean onStartNestedScroll(@NonNull View child, @NonNull View target, int axes, int type) {

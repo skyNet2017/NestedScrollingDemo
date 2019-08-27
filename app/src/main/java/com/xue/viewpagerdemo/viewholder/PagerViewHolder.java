@@ -10,11 +10,11 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 
+import com.xue.viewpagerdemo.NestedScrollLayout2;
 import com.xue.viewpagerdemo.R;
 import com.xue.viewpagerdemo.SubPagerAdapter;
 import com.xue.viewpagerdemo.common.BaseViewHolder;
 import com.xue.viewpagerdemo.common.HolderAnnotation;
-import com.xue.viewpagerdemo.model.NestedViewModel;
 import com.xue.viewpagerdemo.model.PageVO;
 
 import java.util.List;
@@ -35,11 +35,11 @@ public class PagerViewHolder extends BaseViewHolder<List<PageVO>> {
 
     private List<PageVO> model;
 
-    public void setViewModel(NestedViewModel viewModel) {
+    public void setViewModel(NestedScrollLayout2 viewModel) {
         this.viewModel = viewModel;
     }
 
-    private NestedViewModel viewModel;
+    private NestedScrollLayout2 viewModel;
 
     private Observer<Integer> observer = new Observer<Integer>() {
         @Override
@@ -101,12 +101,12 @@ public class PagerViewHolder extends BaseViewHolder<List<PageVO>> {
             pagerAdapter = new SubPagerAdapter(fragmentActivity.getSupportFragmentManager(), model);
             viewPager.setAdapter(pagerAdapter);
             pagerAdapter.notifyDataSetChanged();
-            //viewModel = ViewModelProviders.of(fragmentActivity).get(NestedViewModel.class);
+           // viewModel = ViewModelProviders.of(fragmentActivity).get(NestedViewModel.class);
             pagerAdapter.setViewModel(viewModel);
             /*viewModel.getPagerHeight().removeObserver(observer);
             viewModel.getPagerHeight().observe(fragmentActivity, observer);*/
-            if (viewModel.pagerHeight != 0){
-                itemView.getLayoutParams().height = viewModel.pagerHeight;
+            if (viewModel.getTabAndVpHeight() != 0){
+                itemView.getLayoutParams().height = viewModel.getTabAndVpHeight();
             }
 
         }

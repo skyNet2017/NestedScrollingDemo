@@ -1,7 +1,7 @@
 package com.xue.viewpagerdemo;
 
-import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,12 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.xue.viewpagerdemo.common.AdapterItem;
 import com.xue.viewpagerdemo.common.BaseAdapter;
 import com.xue.viewpagerdemo.common.BaseViewHolder;
-import com.xue.viewpagerdemo.common.InnerAdapter;
+import com.xue.viewpagerdemo.basequick.InnerAdapter;
 import com.xue.viewpagerdemo.items.TextItem;
-import com.xue.viewpagerdemo.model.NestedViewModel;
 import com.xue.viewpagerdemo.viewholder.TextViewHolder;
 
 import java.util.ArrayList;
@@ -37,11 +35,11 @@ public class SubFragment extends Fragment {
 
     private RecyclerView.Adapter adapter;
 
-    public void setViewModel(NestedViewModel viewModel) {
+    public void setViewModel(NestedScrollLayout2 viewModel) {
         this.viewModel = viewModel;
     }
 
-    private NestedViewModel viewModel;
+    private NestedScrollLayout2 viewModel;
 
     @Nullable
     @Override
@@ -68,13 +66,27 @@ public class SubFragment extends Fragment {
             itemList.add(new TextItem("text" + i));
             strings.add("text"+i);
         }
-       // adapter = new BaseAdapter(itemList, view.getContext(), viewHolders);
+        /*adapter = new BaseAdapter(itemList, view.getContext(), viewHolders);
+        recyclerView.setAdapter(adapter);*/
 
         //使用basequickadapter,看loadmore是否能用
         adapter = new InnerAdapter();
         ((InnerAdapter) adapter).setEnableLoadMore(true);
         recyclerView.setAdapter(adapter);
         ((InnerAdapter) adapter).addData(strings);
+
+        ((InnerAdapter) adapter).setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {
+                Log.w("InnerAdapter","onLoadMoreRequested");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((InnerAdapter) adapter).loadMoreComplete();
+                    }
+                },2000);
+            }
+        },recyclerView);
 
 
     }

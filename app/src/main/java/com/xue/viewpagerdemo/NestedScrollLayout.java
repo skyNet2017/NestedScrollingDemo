@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.OverScroller;
 
-import com.xue.viewpagerdemo.model.NestedViewModel;
+
 
 
 
@@ -36,7 +36,7 @@ public class NestedScrollLayout extends FrameLayout {
      */
     private OverScroller mScroller;
 
-    private NestedViewModel mScrollViewModel;
+
 
     private int mLastY;
 
