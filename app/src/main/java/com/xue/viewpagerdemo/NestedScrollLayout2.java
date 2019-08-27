@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.NestedScrollingParent;
+import android.support.v4.view.NestedScrollingParent2;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -21,7 +22,7 @@ import com.xue.viewpagerdemo.model.NestedViewModel;
 /**
  * Created by 薛贤俊 on 2019/2/22.
  */
-public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingParent {
+public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingParent2 {
 
     private View mChildView;
     /**
@@ -87,54 +88,34 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
         mRootList = recyclerView;
     }
 
-   /* @Override
+    @Override
     public boolean onStartNestedScroll(@NonNull View child, @NonNull View target, int axes, int type) {
         return axes == ViewCompat.SCROLL_AXIS_VERTICAL;
-    }*/
-
-    @Override
-    public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes) {
-        return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL;
     }
 
-    /* @Override
+
+
+     @Override
     public void onNestedScrollAccepted(@NonNull View child, @NonNull View target, int axes, int type) {
         mAxes = axes;
-    }*/
+    }
+
 
     @Override
-    public void onNestedScrollAccepted(View child, View target, int axes) {
-        //super.onNestedScrollAccepted(child, target, axes);
-        mAxes = axes;
-    }
-    /*@Override
     public void onStopNestedScroll(@NonNull View target, int type) {
         mAxes = SCROLL_AXIS_NONE;
-    }*/
+    }
 
     @Override
-    public void onStopNestedScroll(View child) {
-        //super.onStopNestedScroll(child);
-        mAxes = SCROLL_AXIS_NONE;
+    public void onNestedScroll(@NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
+
     }
 
 
 
-    /*@Override
-    public void onNestedPreScroll(@NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
-        if (mChildView == null) {
-            return;
-        }
-        if (target == mRootList) {
-            onParentScrolling(mChildView.getTop(), dy, consumed);
-        } else {
-            onChildScrolling(mChildView.getTop(), dy, consumed);
-        }
-    }*/
 
     @Override
-    public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
-        //super.onNestedPreScroll(target, dx, dy, consumed);
+    public void onNestedPreScroll(@NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
         if (mChildView == null) {
             return;
         }

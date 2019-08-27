@@ -105,8 +105,10 @@ public class PagerViewHolder extends BaseViewHolder<List<PageVO>> {
             pagerAdapter.setViewModel(viewModel);
             /*viewModel.getPagerHeight().removeObserver(observer);
             viewModel.getPagerHeight().observe(fragmentActivity, observer);*/
-            if (viewModel.pagerHeight != 0)
+            if (viewModel.pagerHeight != 0){
                 itemView.getLayoutParams().height = viewModel.pagerHeight;
+            }
+
         }
     }
 }

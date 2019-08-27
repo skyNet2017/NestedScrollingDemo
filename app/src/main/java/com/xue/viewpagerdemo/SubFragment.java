@@ -14,9 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xue.viewpagerdemo.common.AdapterItem;
 import com.xue.viewpagerdemo.common.BaseAdapter;
 import com.xue.viewpagerdemo.common.BaseViewHolder;
+import com.xue.viewpagerdemo.common.InnerAdapter;
 import com.xue.viewpagerdemo.items.TextItem;
 import com.xue.viewpagerdemo.model.NestedViewModel;
 import com.xue.viewpagerdemo.viewholder.TextViewHolder;
@@ -60,12 +62,19 @@ public class SubFragment extends Fragment {
 
         SparseArray<Class<? extends BaseViewHolder>> viewHolders = new SparseArray<>();
         viewHolders.put(ViewType.TYPE_TEXT, TextViewHolder.class);
-        List<AdapterItem> itemList = new ArrayList<>();
+        List<TextItem> itemList = new ArrayList<>();
+        List<String> strings = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             itemList.add(new TextItem("text" + i));
+            strings.add("text"+i);
         }
-        adapter = new BaseAdapter(itemList, view.getContext(), viewHolders);
+       // adapter = new BaseAdapter(itemList, view.getContext(), viewHolders);
+
+        //使用basequickadapter,看loadmore是否能用
+        adapter = new InnerAdapter();
+        ((InnerAdapter) adapter).setEnableLoadMore(true);
         recyclerView.setAdapter(adapter);
+        ((InnerAdapter) adapter).addData(strings);
 
 
     }
