@@ -20,12 +20,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/NestedScrollLayout2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/NestedScrollLayout2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/SubFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/SubFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/goods_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/goods_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_pager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_pager.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -111,11 +108,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/NestedScrollLayout2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="248" column="84" selection-start-line="248" selection-start-column="84" selection-end-line="248" selection-end-column="84" />
+            <state relative-caret-position="403">
+              <caret line="291" column="42" lean-forward="true" selection-start-line="291" selection-start-column="42" selection-end-line="291" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1761#1762#0" expanded="true" />
@@ -127,7 +124,7 @@
                 <element signature="e#3067#3068#0" expanded="true" />
                 <element signature="e#3107#3108#0" expanded="true" />
                 <element signature="method#onChildScrolling#0;class#NestedScrollLayout2#0" />
-                <element signature="e#11761#11762#0" expanded="true" />
+                <element signature="e#11844#11845#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -155,8 +152,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-278">
-              <caret line="109" column="60" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="60" />
+            <state relative-caret-position="126">
+              <caret line="135" selection-start-line="135" selection-end-line="135" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1577#1578#0" expanded="true" />
@@ -167,10 +164,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.ignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/SubFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="91" column="37" lean-forward="true" selection-start-line="91" selection-start-column="37" selection-end-line="91" selection-end-column="37" />
+            <state relative-caret-position="367">
+              <caret line="75" column="55" lean-forward="true" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -204,8 +210,8 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/goods_list.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+            <state relative-caret-position="311">
+              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -266,8 +272,8 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_first_generation.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_pager.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/goods_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/goods_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/NestedScrollLayout2.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/SubFragment.java" />
       </list>
@@ -294,58 +300,6 @@
             <path>
               <item name="NestedScrollingDemo" type="b2602c69:ProjectViewProjectNode" />
               <item name="NestedScrollingDemo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="NestedScrollingDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NestedScrollingDemo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="NestedScrollingDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NestedScrollingDemo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NestedScrollingDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NestedScrollingDemo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NestedScrollingDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NestedScrollingDemo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NestedScrollingDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NestedScrollingDemo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="viewpagerdemo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NestedScrollingDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NestedScrollingDemo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NestedScrollingDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NestedScrollingDemo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NestedScrollingDemo" type="b2602c69:ProjectViewProjectNode" />
@@ -610,7 +564,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1000" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="1" />
@@ -622,17 +575,17 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Structure" order="8" side_tool="true" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="0" />
-      <window_info anchor="bottom" id="Build" order="1" weight="0.38215858" />
+      <window_info anchor="bottom" id="Build" order="1" weight="0.19493392" />
       <window_info anchor="bottom" id="REST Client" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.10939226" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.34471366" />
       <window_info anchor="bottom" id="Android Profiler" order="4" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Statistic" order="6" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="SonarLint" order="8" weight="0.32929516" />
-      <window_info anchor="bottom" id="Logcat" order="9" weight="0.27312776" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3469163" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.29295155" />
+      <window_info anchor="bottom" id="Logcat" order="9" weight="0.34801763" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.311674" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.38105726" />
       <window_info anchor="bottom" id="Debug" order="12" weight="0.32929516" />
       <window_info anchor="bottom" id="Find" order="13" weight="0.32929516" />
       <window_info anchor="right" id="Palette&#9;" order="0" />
@@ -738,13 +691,6 @@
             <element signature="e#282#283#0" expanded="true" />
             <element signature="e#314#315#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.ignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -937,13 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smartrefresh/SmartRefreshLayout/1.1.0/66ac438d72240b6d054840d7ff230fb95d060643/SmartRefreshLayout-1.1.0-sources.jar!/com/scwang/smartrefresh/layout/SmartRefreshLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34699">
-          <caret line="3195" column="19" selection-start-line="3195" selection-start-column="19" selection-end-line="3195" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smartrefresh/SmartRefreshLayout/1.1.0/66ac438d72240b6d054840d7ff230fb95d060643/SmartRefreshLayout-1.1.0-sources.jar!/com/scwang/smartrefresh/layout/impl/RefreshFooterWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1007,14 +946,6 @@
     <entry file="file://$PROJECT_DIR$/captures/com.xue.viewpagerdemo_2019.08.28_15.53.li">
       <provider selected="true" editor-type-id="capture-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_first_generation.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="43" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -1053,6 +984,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.ignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="135" selection-start-line="135" selection-end-line="135" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1577#1578#0" expanded="true" />
+            <element signature="e#1609#1610#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_first_generation.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="43" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_pager.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -1064,37 +1022,22 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/goods_list.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+        <state relative-caret-position="311">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/MainActivity.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smartrefresh/SmartRefreshLayout/1.1.0/66ac438d72240b6d054840d7ff230fb95d060643/SmartRefreshLayout-1.1.0-sources.jar!/com/scwang/smartrefresh/layout/SmartRefreshLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-278">
-          <caret line="109" column="60" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1577#1578#0" expanded="true" />
-            <element signature="e#1609#1610#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/SubFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="91" column="37" lean-forward="true" selection-start-line="91" selection-start-column="37" selection-end-line="91" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="207">
+          <caret line="3195" column="19" selection-start-line="3195" selection-start-column="19" selection-end-line="3195" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/NestedScrollLayout2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="248" column="84" selection-start-line="248" selection-start-column="84" selection-end-line="248" selection-end-column="84" />
+        <state relative-caret-position="403">
+          <caret line="291" column="42" lean-forward="true" selection-start-line="291" selection-start-column="42" selection-end-line="291" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1761#1762#0" expanded="true" />
@@ -1106,7 +1049,17 @@
             <element signature="e#3067#3068#0" expanded="true" />
             <element signature="e#3107#3108#0" expanded="true" />
             <element signature="method#onChildScrolling#0;class#NestedScrollLayout2#0" />
-            <element signature="e#11761#11762#0" expanded="true" />
+            <element signature="e#11844#11845#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xue/viewpagerdemo/SubFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="75" column="55" lean-forward="true" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -5,7 +5,7 @@
     android:fillViewport="true"
     android:id="@+id/inner_parent"
     android:layout_height="match_parent">-->
-    <LinearLayout
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -14,10 +14,9 @@
     <com.xue.viewpagerdemo.BetterScrollRecycleView
         android:layout_width="match_parent"
         android:id="@+id/recyclerview"
-        android:layout_weight="1"
-        android:layout_height="0dp" />
+        android:layout_height="match_parent" />
 
-        <TextView
+       <!-- <TextView
             android:text="load more....."
             android:height="90px"
             android:gravity="center"
@@ -26,9 +25,9 @@
             android:visibility="gone"
             android:id="@+id/tv_loadmore"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"/>-->
 
 
-    </LinearLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 <!--
 </android.support.v4.widget.NestedScrollView>-->

@@ -99,12 +99,12 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
      * 切换viewpager里的recycleview时： 当前fragment切换到前台时调用
      * @param mChildList
      */
-    public void setChildList(RecyclerView mChildList, View tvLoadMore) {
+    public void setChildList(RecyclerView mChildList, SmartRefreshLayout tvLoadMore) {
         this.mChildList = mChildList;
         this.tvLoadMore = tvLoadMore;
     }
 
-    View tvLoadMore;
+    SmartRefreshLayout tvLoadMore;
 
     /**
      * 初始化时调用，设置外部主recycleview
@@ -246,7 +246,8 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                         if(scrollListener != null){
                             scrollListener.onReachBottom(mChildList,mChildView);
                         }
-                        tvLoadMore.findViewById(R.id.tv_loadmore).setVisibility(VISIBLE);
+                        tvLoadMore.autoLoadMore();
+                        //tvLoadMore.findViewById(R.id.tv_loadmore).setVisibility(VISIBLE);
                         //reduceInnerRecycleviewHeight(dy,consumed);
                         //refreshLayout.autoLoadMore()
                     }
@@ -285,7 +286,7 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                         if(scrollListener != null){
                             scrollListener.onLeaveBottom(mChildList,mChildView);
                         }
-                        tvLoadMore.findViewById(R.id.tv_loadmore).setVisibility(GONE);
+                       // tvLoadMore.findViewById(R.id.tv_loadmore).setVisibility(GONE);
                     }
                     if (mChildList != null && mChildList.canScrollVertically(dy)) {
                         //子列表能向下滑，那么就下滑子列表
@@ -313,11 +314,11 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
     }
 
     private void reduceInnerRecycleviewHeight(int dy, int[] consumed) {
-        if(mChildList.getMeasuredHeight() + footHeight + 120 == pagerHeight ){
+        if(mChildList.getMeasuredHeight() + footHeight + 120 <= pagerHeight ){
             return;
         }
 
-        //还需要滑多远：
+        //还需要缩减多高：
         int toReduce = mChildList.getMeasuredHeight() - (pagerHeight - 120 - footHeight) ;
         if(toReduce >= dy){
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mChildList.getLayoutParams();

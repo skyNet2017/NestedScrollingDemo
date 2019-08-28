@@ -49,7 +49,7 @@ public class SubFragment extends Fragment {
     SmartRefreshLayout refreshLayout;
     TextView tvLoadMore;
 
-    View loadMoreLayout;
+    SmartRefreshLayout loadMoreLayout;
 
     @Nullable
     @Override
@@ -68,9 +68,12 @@ public class SubFragment extends Fragment {
         recyclerView.setNestedScrollingEnabled(true);
         recyclerView.setBackgroundColor(color);
 
-        tvLoadMore = view.findViewById(R.id.tv_loadmore);
+       // tvLoadMore = view.findViewById(R.id.tv_loadmore);
 
         loadMoreLayout = view.findViewById(R.id.inner_parent);
+        loadMoreLayout.setEnableLoadMore(true);
+        loadMoreLayout.setEnableRefresh(false);
+        loadMoreLayout.setNestedScrollingEnabled(true);
 
        /* refreshLayout = view.findViewById(R.id.smartrefresh_inner);
         refreshLayout.setEnableLoadMore(true);
@@ -81,7 +84,7 @@ public class SubFragment extends Fragment {
         viewHolders.put(ViewType.TYPE_TEXT, TextViewHolder.class);
         List<TextItem> itemList = new ArrayList<>();
         List<String> strings = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 60; i++) {
             itemList.add(new TextItem("text" + i));
             strings.add("text"+i);
         }
