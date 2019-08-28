@@ -81,7 +81,7 @@ public class SubFragment extends Fragment {
         viewHolders.put(ViewType.TYPE_TEXT, TextViewHolder.class);
         List<TextItem> itemList = new ArrayList<>();
         List<String> strings = new ArrayList<>();
-        for (int i = 0; i < 60; i++) {
+        for (int i = 0; i < 10; i++) {
             itemList.add(new TextItem("text" + i));
             strings.add("text"+i);
         }

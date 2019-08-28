@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -202,6 +203,8 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
 
 
     int footHeight = 180;
+    int innerLvHeight;
+    int innerPageHeight;
     /**
      * 父列表在滑动
      *
@@ -224,9 +227,9 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                 // todo 如果子列表没有显示，而显示的是状态view，那么需要将mChildList置空
 
 
-                if(!mChildList.canScrollVertically(dy)){
+                if(!mChildList.canScrollVertically(1)){
                     Log.e("onNestedPreScroll","子列表向上滑，连"+dy+"个像素都滑不动了，说明到底了");
-                    if(tvLoadMore.getScrollY() < footHeight){
+                    /*if(tvLoadMore.getScrollY() < footHeight){
                         Log.e("onNestedPreScroll",dy+"上滑整体linearlayout："+tvLoadMore.getScrollY());
                         if(dy <= footHeight -tvLoadMore.getScrollY()){
                             tvLoadMore.scrollBy(0,dy);
@@ -235,8 +238,7 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                             tvLoadMore.scrollBy(0,footHeight - tvLoadMore.getScrollY());
                             consumed[1] = footHeight - tvLoadMore.getScrollY();
                         }
-
-                    }
+                    }*/
 
 
                     if(!isBottom){
@@ -244,6 +246,8 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                         if(scrollListener != null){
                             scrollListener.onReachBottom(mChildList,mChildView);
                         }
+                        tvLoadMore.findViewById(R.id.tv_loadmore).setVisibility(VISIBLE);
+                        //reduceInnerRecycleviewHeight(dy,consumed);
                         //refreshLayout.autoLoadMore()
                     }
 
@@ -255,7 +259,7 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
             } else {
                 //dy<0 ,向下滑
                 if(tvLoadMore.getScrollY() > 0){
-                    Log.e("onNestedPreScroll",dy+"下滑整体linearlayout："+tvLoadMore.getScrollY());
+                    /*Log.e("onNestedPreScroll",dy+"下滑整体linearlayout："+tvLoadMore.getScrollY());
                     if(tvLoadMore.getScrollY() + dy >0){
                         tvLoadMore.scrollBy(0,dy);
                         consumed[1] = dy;
@@ -273,9 +277,16 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                         }else {
                             Log.e("onNestedPreScroll","子列表已经下滑到顶，就下滑母列表，事件被母列表接管");
                         }
-                    }
+                    }*/
 
                 }else {
+                    if(!mChildList.canScrollVertically(1)){
+                        isBottom = false;
+                        if(scrollListener != null){
+                            scrollListener.onLeaveBottom(mChildList,mChildView);
+                        }
+                        tvLoadMore.findViewById(R.id.tv_loadmore).setVisibility(GONE);
+                    }
                     if (mChildList != null && mChildList.canScrollVertically(dy)) {
                         //子列表能向下滑，那么就下滑子列表
                         Log.e("onNestedPreScroll","子列表能向下滑，那么就下滑子列表");
@@ -285,6 +296,7 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                         Log.e("onNestedPreScroll","子列表已经下滑到顶，就下滑母列表，事件被母列表接管");
                     }
                 }
+
             }
         } else {
             Log.e("onNestedPreScroll","tablayout+viewpager列表还没在parent里置顶");
@@ -297,6 +309,27 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                     scrollListener.onTabsStateChanged(isTabsTop);
                 }
             }
+        }
+    }
+
+    private void reduceInnerRecycleviewHeight(int dy, int[] consumed) {
+        if(mChildList.getMeasuredHeight() + footHeight + 120 == pagerHeight ){
+            return;
+        }
+
+        //还需要滑多远：
+        int toReduce = mChildList.getMeasuredHeight() - (pagerHeight - 120 - footHeight) ;
+        if(toReduce >= dy){
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mChildList.getLayoutParams();
+            params.height -= dy;
+            mChildList.setLayoutParams(params);
+            consumed[1] = dy;
+        }else {
+            int toConsume = toReduce;
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mChildList.getLayoutParams();
+            params.height -= toConsume;
+            mChildList.setLayoutParams(params);
+            consumed[1] = toConsume;
         }
     }
 
@@ -348,6 +381,8 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
          * @param tabvpView tab+vp的母view，从这里可以拿到position
          */
         void onReachBottom(RecyclerView recyclerView, View tabvpView);
+
+        void onLeaveBottom(RecyclerView recyclerView, View tabvpView);
     }
 
 }

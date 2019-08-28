@@ -104,6 +104,11 @@ public class MainActivity extends AppCompatActivity {
                 },2000);*/
 
             }
+
+            @Override
+            public void onLeaveBottom(RecyclerView recyclerView, View tabvpView) {
+                Log.w("onTabsStateChanged","onLeaveBottom");
+            }
         });
     }
 
