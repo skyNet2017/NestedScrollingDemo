@@ -72,6 +72,7 @@ public class SubFragment extends Fragment {
 
         loadMoreLayout = view.findViewById(R.id.inner_parent);
         loadMoreLayout.setEnableLoadMore(true);
+        loadMoreLayout.setEnableAutoLoadMore(true);
         loadMoreLayout.setEnableRefresh(false);
         loadMoreLayout.setNestedScrollingEnabled(true);
 

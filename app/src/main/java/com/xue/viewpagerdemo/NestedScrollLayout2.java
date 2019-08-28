@@ -293,8 +293,32 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                         //子列表能向下滑，那么就下滑子列表
                         Log.e("onNestedPreScroll","子列表能向下滑，那么就下滑子列表");
                         //if(tvLoadMore.getState() == RefreshState.)
-                        consumed[1] = dy;
-                        mChildList.scrollBy(0, dy);
+                        int[] location = new int[2];
+                        tvLoadMore.getRefreshFooter().getView().getLocationOnScreen(location);
+                        int y = location[1];
+                        if(y == 0){
+                            consumed[1] = dy;
+                            mChildList.scrollBy(0, dy);
+                        }else {
+                            int ddy = y - ScreenUtil.getScreenHeight();
+                            if(ddy >=0){
+                                consumed[1] = dy;
+                                mChildList.scrollBy(0, dy);
+                            }else {
+                                tvLoadMore.onNestedPreScroll(mChildList,0,dy,consumed);
+                                //consumed[1] = dy;
+                                //mChildList.scrollBy(0, ddy);
+                            }
+
+                        }
+
+
+
+                        //tvLoadMore.onNestedPreScroll(mChildList,0,dy,consumed);
+
+
+                        //consumed[1] = dy;
+                        //mChildList.scrollBy(0, dy);
                     }else {
                         Log.e("onNestedPreScroll","子列表已经下滑到顶，就下滑母列表，事件被母列表接管");
                     }
