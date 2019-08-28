@@ -1,5 +1,0 @@
-
-Isquid:S1199I"-Extract this nested code block into a method.(ê¶ôĞùÿÿÿÿ
-Bsquid:S1659",Declare "mInitialTouchY" on a separate line.(’Ö­B
-nsquid:S37768"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ü×ã•üÿÿÿÿ
-hsquid:CallToDeprecatedMethodC";Remove this use of "ACTION_POINTER_DOWN"; it is deprecated.(Ù°èúÿÿÿÿ

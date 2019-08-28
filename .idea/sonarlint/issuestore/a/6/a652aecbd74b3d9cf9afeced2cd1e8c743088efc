@@ -1,9 +1,0 @@
-
-isquid:CommentedOutCodeLinej"<This block of commented-out lines of code should be removed.(·»ðâ8§”úŽÍ-
-ysquid:S1450""[Remove the "pagerAdapter" field and declare it as a local variable in the relevant methods.(æŸ 8§”úŽÍ-
-Osquid:S1068,",Remove this unused "observer" private field.(Ð¹´Ñøÿÿÿÿ8§”úŽÍ-
-Rsquid:EmptyStatementUsageCheckO"Remove this empty statement.(Ä…´ûÿÿÿÿ8¬ÅÍ-
-Ÿsquid:S1186F"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(—Æ…Á8§”úŽÍ-
-lsquid:UselessImportCheck"ARemove this unused import 'android.support.v4.view.PagerAdapter'.(–ø¦Ö8§”úŽÍ-
-vsquid:S1450 "XRemove the "tabLayout" field and declare it as a local variable in the relevant methods.(¤×ä8§”úŽÍ-
-nsquid:CommentedOutCodeLineh"<This block of commented-out lines of code should be removed.(Ãã€Åýÿÿÿÿ8¹‰“Í-

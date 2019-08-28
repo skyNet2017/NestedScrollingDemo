@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.constant.RefreshState;
 
 
 /**
@@ -291,6 +292,7 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                     if (mChildList != null && mChildList.canScrollVertically(dy)) {
                         //子列表能向下滑，那么就下滑子列表
                         Log.e("onNestedPreScroll","子列表能向下滑，那么就下滑子列表");
+                        //if(tvLoadMore.getState() == RefreshState.)
                         consumed[1] = dy;
                         mChildList.scrollBy(0, dy);
                     }else {
