@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.xue.viewpagerdemo.BetterScrollRecycleView
+<!--<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:id="@+id/inner_parent"
+    android:layout_height="match_parent">-->
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:id="@+id/recyclerview"
-        android:layout_height="match_parent" />
-</FrameLayout>
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/inner_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.xue.viewpagerdemo.BetterScrollRecycleView
+            android:layout_width="match_parent"
+            android:id="@+id/recyclerview"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+        <TextView
+            android:text="load more....."
+            android:height="90px"
+            android:gravity="center"
+            android:background="#00ff00"
+            android:textColor="#ff0000"
+            android:visibility="visible"
+            android:id="@+id/tv_loadmore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+<!--
+</android.support.v4.widget.NestedScrollView>-->

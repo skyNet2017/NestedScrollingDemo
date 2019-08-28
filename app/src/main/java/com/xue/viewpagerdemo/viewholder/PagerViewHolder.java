@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
 
@@ -75,13 +76,15 @@ public class PagerViewHolder extends BaseViewHolder<List<PageVO>> {
         itemView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
             @Override
             public void onViewAttachedToWindow(View view) {
+                Log.e("tabLayout+vp","AttachedToWindow");
                 if (viewModel != null) {
-                    viewModel.setChildView(itemView);;
+                    viewModel.setChildView(itemView);
                 }
             }
 
             @Override
             public void onViewDetachedFromWindow(View view) {
+                Log.e("tabLayout+vp","DetachedFromWindow");
                 if (viewModel != null) {
                     viewModel.setChildView(null);
                 }

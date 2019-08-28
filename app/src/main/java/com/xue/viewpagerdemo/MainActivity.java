@@ -4,16 +4,19 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.View;
 import android.view.ViewTreeObserver;
 
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.jakewharton.scalpel.ScalpelFrameLayout;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xue.viewpagerdemo.NestedScrollLayout;
 import com.xue.viewpagerdemo.NestedScrollLayout2;
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private NestedScrollLayout2 container;
 
     private SmartRefreshLayout refreshLayout;
+    ScalpelFrameLayout scalpelFrameLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,12 +76,35 @@ public class MainActivity extends AppCompatActivity {
         initAdapter();
         //initAdapter2();
 
+        scalpelFrameLayout = findViewById(R.id.scalpel);
+        scalpelFrameLayout.setLayerInteractionEnabled(false);
+
 
 
         refreshLayout = findViewById(R.id.refreshlayout);
         refreshLayout.setFooterHeight(30);
         refreshLayout.setEnableLoadMore(false);
         //refreshLayout.foot
+
+        container.setScrollListener(new NestedScrollLayout2.ScrollListener() {
+            @Override
+            public void onTabsStateChanged(boolean isTabsTop) {
+                Log.w("onTabsStateChanged","isTabsTop:"+isTabsTop);
+            }
+
+            @Override
+            public void onReachBottom(RecyclerView recyclerView, View tabvpView) {
+                Log.w("onTabsStateChanged","onReachBottom");
+                /*refreshLayout.setEnableLoadMore(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        refreshLayout.finishLoadMore();
+                    }
+                },2000);*/
+
+            }
+        });
     }
 
    /* private void initAdapter2() {

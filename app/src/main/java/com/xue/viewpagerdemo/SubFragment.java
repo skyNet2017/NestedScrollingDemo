@@ -13,14 +13,18 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xue.viewpagerdemo.common.BaseAdapter;
 import com.xue.viewpagerdemo.common.BaseViewHolder;
 import com.xue.viewpagerdemo.basequick.InnerAdapter;
 import com.xue.viewpagerdemo.items.TextItem;
 import com.xue.viewpagerdemo.viewholder.TextViewHolder;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +46,11 @@ public class SubFragment extends Fragment {
 
     private NestedScrollLayout2 viewModel;
 
+    SmartRefreshLayout refreshLayout;
+    TextView tvLoadMore;
+
+    View loadMoreLayout;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -59,11 +68,20 @@ public class SubFragment extends Fragment {
         recyclerView.setNestedScrollingEnabled(true);
         recyclerView.setBackgroundColor(color);
 
+        tvLoadMore = view.findViewById(R.id.tv_loadmore);
+
+        loadMoreLayout = view.findViewById(R.id.inner_parent);
+
+       /* refreshLayout = view.findViewById(R.id.smartrefresh_inner);
+        refreshLayout.setEnableLoadMore(true);
+        //refreshLayout.setRefreshFooter()
+        refreshLayout.setEnableRefresh(false);*/
+
         SparseArray<Class<? extends BaseViewHolder>> viewHolders = new SparseArray<>();
         viewHolders.put(ViewType.TYPE_TEXT, TextViewHolder.class);
         List<TextItem> itemList = new ArrayList<>();
         List<String> strings = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 60; i++) {
             itemList.add(new TextItem("text" + i));
             strings.add("text"+i);
         }
@@ -78,10 +96,10 @@ public class SubFragment extends Fragment {
 
 
         //loadmore
-       /* final TextView textView = new TextView(getContext());
+        /*final TextView textView = new TextView(getContext());
         textView.setText("loading.....");
 
-        ((InnerAdapter) adapter).addFooterView(textView);
+        ((InnerAdapter) adapter).addFooterView(textView);*/
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -94,7 +112,7 @@ public class SubFragment extends Fragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 Log.w("inner","onScrolled");
-                if(isVisibleToUser){
+                /*if(isVisibleToUser){
                     int[] location = new int[2];
                     textView.getLocationOnScreen(location);
                     int y = location[1];
@@ -103,11 +121,11 @@ public class SubFragment extends Fragment {
                         Log.e("inner","划出了屏幕，看不到footview");
                         return;
                     }
-                    *//*if(y <= ScreenUtil.getScreenHeight()){
+                    if(y <= ScreenUtil.getScreenHeight()){
                      Log.e("inner","滑动到底部看到了footview");
                     }else {
                         Log.e("inner","划出了屏幕，看不到footview");
-                    }*//*
+                    }
                     Log.e("inner","滑动到底部看到了footview");
                     if(isLoadingMore){
                         Log.e("inner","is loadingmore....");
@@ -121,11 +139,11 @@ public class SubFragment extends Fragment {
                             }
                         },2000);
                     }
-                }
+                }*/
             }
-        });*/
+        });
 
-        ((InnerAdapter) adapter).setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+        /*((InnerAdapter) adapter).setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
                 Log.w("InnerAdapter","onLoadMoreRequested");
@@ -136,7 +154,7 @@ public class SubFragment extends Fragment {
                     }
                 },2000);
             }
-        },recyclerView);
+        },recyclerView);*/
 
 
 
@@ -150,7 +168,7 @@ public class SubFragment extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         this.isVisibleToUser = isVisibleToUser;
         if (isVisibleToUser && trackFragment() && viewModel != null) {
-            viewModel.setChildList(recyclerView);
+            viewModel.setChildList(recyclerView,loadMoreLayout);
         }
     }
 
@@ -158,7 +176,7 @@ public class SubFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (trackFragment() && viewModel != null) {
-            viewModel.setChildList(recyclerView);
+            viewModel.setChildList(recyclerView,loadMoreLayout);
         }
     }
 
@@ -166,7 +184,7 @@ public class SubFragment extends Fragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden && trackFragment() && viewModel != null) {
-            viewModel.setChildList(recyclerView);
+            viewModel.setChildList(recyclerView,loadMoreLayout);
         }
     }
 
