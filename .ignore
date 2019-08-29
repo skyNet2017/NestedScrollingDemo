@@ -9,4 +9,6 @@ local.properties
 .idea/
 /.idea/
 /.gradle
+/.gradle/
+.gradle/
 
