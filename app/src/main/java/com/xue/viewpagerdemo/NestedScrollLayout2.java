@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -100,12 +101,12 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
      * 切换viewpager里的recycleview时： 当前fragment切换到前台时调用
      * @param mChildList
      */
-    public void setChildList(RecyclerView mChildList, SmartRefreshLayout tvLoadMore) {
+    public void setChildList(RecyclerView mChildList, ScrollView tvLoadMore) {
         this.mChildList = mChildList;
         this.tvLoadMore = tvLoadMore;
     }
 
-    SmartRefreshLayout tvLoadMore;
+    ScrollView tvLoadMore;
 
     /**
      * 初始化时调用，设置外部主recycleview
@@ -230,27 +231,22 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
 
                 if(!mChildList.canScrollVertically(1)){
                     Log.e("onNestedPreScroll","子列表向上滑，连"+dy+"个像素都滑不动了，说明到底了");
-                    /*if(tvLoadMore.getScrollY() < footHeight){
+                    if(tvLoadMore.canScrollVertically(1)){
                         Log.e("onNestedPreScroll",dy+"上滑整体linearlayout："+tvLoadMore.getScrollY());
-                        if(dy <= footHeight -tvLoadMore.getScrollY()){
+                        /*if(dy <= footHeight -tvLoadMore.getScrollY()){
                             tvLoadMore.scrollBy(0,dy);
                             consumed[1] = dy;
                         }else {
                             tvLoadMore.scrollBy(0,footHeight - tvLoadMore.getScrollY());
                             consumed[1] = footHeight - tvLoadMore.getScrollY();
+                        }*/
+                        tvLoadMore.scrollBy(0,dy);
+                        if(!isBottom){
+                            isBottom = true;
+                            if(scrollListener != null){
+                                scrollListener.onReachBottom(mChildList,mChildView);
+                            }
                         }
-                    }*/
-
-
-                    if(!isBottom){
-                        isBottom = true;
-                        if(scrollListener != null){
-                            scrollListener.onReachBottom(mChildList,mChildView);
-                        }
-                        tvLoadMore.autoLoadMore();
-                        //tvLoadMore.findViewById(R.id.tv_loadmore).setVisibility(VISIBLE);
-                        //reduceInnerRecycleviewHeight(dy,consumed);
-                        //refreshLayout.autoLoadMore()
                     }
 
                 }else {
@@ -261,7 +257,7 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
             } else {
                 //dy<0 ,向下滑
                 if(tvLoadMore.getScrollY() > 0){
-                    /*Log.e("onNestedPreScroll",dy+"下滑整体linearlayout："+tvLoadMore.getScrollY());
+                    Log.e("onNestedPreScroll",dy+"下滑整体linearlayout："+tvLoadMore.getScrollY());
                     if(tvLoadMore.getScrollY() + dy >0){
                         tvLoadMore.scrollBy(0,dy);
                         consumed[1] = dy;
@@ -279,7 +275,7 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                         }else {
                             Log.e("onNestedPreScroll","子列表已经下滑到顶，就下滑母列表，事件被母列表接管");
                         }
-                    }*/
+                    }
 
                 }else {
                     if(!mChildList.canScrollVertically(1)){
@@ -293,26 +289,10 @@ public class NestedScrollLayout2 extends FrameLayout implements NestedScrollingP
                         //子列表能向下滑，那么就下滑子列表
                         Log.e("onNestedPreScroll","子列表能向下滑，那么就下滑子列表");
                         //if(tvLoadMore.getState() == RefreshState.)
-                        int[] location = new int[2];
-                        tvLoadMore.getRefreshFooter().getView().getLocationOnScreen(location);
-                        int y = location[1];
-                        if(y == 0){
-                            consumed[1] = dy;
-                            mChildList.scrollBy(0, dy);
-                        }else {
-                            int ddy = y - ScreenUtil.getScreenHeight();
-                            if(ddy >=0){
-                                consumed[1] = dy;
-                                mChildList.scrollBy(0, dy);
-                            }else {
-                                tvLoadMore.onNestedPreScroll(mChildList,0,dy,consumed);
-                                //consumed[1] = dy;
-                                //mChildList.scrollBy(0, ddy);
-                            }
+                        //int consumedY =  ((MySamrtRefreshLayout)tvLoadMore).computeNestScrollV(mChildList,0,dy,consumed);
 
-                        }
-
-
+                        mChildList.scrollBy(0,dy );
+                        consumed[1] = dy;
 
                         //tvLoadMore.onNestedPreScroll(mChildList,0,dy,consumed);
 

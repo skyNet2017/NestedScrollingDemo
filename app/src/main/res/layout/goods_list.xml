@@ -5,16 +5,32 @@
     android:fillViewport="true"
     android:id="@+id/inner_parent"
     android:layout_height="match_parent">-->
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+    <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:orientation="vertical"
     android:id="@+id/inner_parent"
         android:layout_height="match_parent">
-    <com.xue.viewpagerdemo.BetterScrollRecycleView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:id="@+id/recyclerview"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
+        <com.xue.viewpagerdemo.BetterScrollRecycleView
+            android:layout_width="match_parent"
+            android:id="@+id/recyclerview"
+            android:layout_height="match_parent" />
+        <TextView
+            android:text="load more....."
+            android:height="180px"
+            android:gravity="center"
+            android:background="#00ff00"
+            android:textColor="#ff0000"
+            android:visibility="visible"
+            android:id="@+id/tv_loadmore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
 
        <!-- <TextView
             android:text="load more....."
@@ -28,6 +44,6 @@
             android:layout_height="wrap_content"/>-->
 
 
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </ScrollView>
 <!--
 </android.support.v4.widget.NestedScrollView>-->

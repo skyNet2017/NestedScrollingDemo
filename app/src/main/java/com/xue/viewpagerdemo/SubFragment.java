@@ -1,5 +1,6 @@
 package com.xue.viewpagerdemo;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -49,7 +51,7 @@ public class SubFragment extends Fragment {
     SmartRefreshLayout refreshLayout;
     TextView tvLoadMore;
 
-    SmartRefreshLayout loadMoreLayout;
+    ScrollView loadMoreLayout;
 
     @Nullable
     @Override
@@ -71,10 +73,10 @@ public class SubFragment extends Fragment {
        // tvLoadMore = view.findViewById(R.id.tv_loadmore);
 
         loadMoreLayout = view.findViewById(R.id.inner_parent);
-        loadMoreLayout.setEnableLoadMore(true);
+       /* loadMoreLayout.setEnableLoadMore(true);
         loadMoreLayout.setEnableAutoLoadMore(true);
         loadMoreLayout.setEnableRefresh(false);
-        loadMoreLayout.setNestedScrollingEnabled(true);
+        loadMoreLayout.setNestedScrollingEnabled(true);*/
 
        /* refreshLayout = view.findViewById(R.id.smartrefresh_inner);
         refreshLayout.setEnableLoadMore(true);
@@ -104,6 +106,17 @@ public class SubFragment extends Fragment {
         textView.setText("loading.....");
 
         ((InnerAdapter) adapter).addFooterView(textView);*/
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            loadMoreLayout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+
+                }
+            });
+        }
+
+
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
